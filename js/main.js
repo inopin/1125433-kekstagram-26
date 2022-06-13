@@ -13,3 +13,5 @@ function checkStringRange(string, maxStringAllowed) {
     return false;
   } return true;
 }
+getRandomIntInclusive(3, 4);
+checkStringRange(33, 66);
