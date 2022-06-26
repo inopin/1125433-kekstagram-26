@@ -1,5 +1,5 @@
 import {getRandomArrayElement, getRandomPositiveInteger} from './utils.js';
-import {descriptions, comments, names} from './arrays.js';
+import {descriptions, comments, names} from './const.js';
 
 
 const ARRAY_LENGTH = 25;
@@ -22,7 +22,7 @@ const createComment = function () {
   };
 };
 
-const createObj = function () {
+const createPost = function () {
   return {
     id: getId('posts'),
     url: `photos/${getId('img')}.jpg`,
@@ -35,5 +35,5 @@ const createObj = function () {
   };
 };
 
-const objects = () => Array.from({ length: ARRAY_LENGTH }, createObj);
-export {objects};
+const posts = () => Array.from({ length: ARRAY_LENGTH }, createPost);
+export {posts};

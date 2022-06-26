@@ -1,2 +1,1 @@
-import {objects} from './modules/data.js';
-objects();
+import './modules/minImg.js';
