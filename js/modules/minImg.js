@@ -1,5 +1,3 @@
-// import {posts} from './data.js';
-import {openModal} from './modal.js';
 import {renderPicture} from './getBigPicture.js';
 
 
