@@ -1,13 +1,19 @@
+import { openModal, closeModal } from './modal.js';
+
 const AVATAR_WIDTH = 35;
 const AVATAR_HEIGHT = 35;
 
-const postModalElement = document.querySelector('.big-picture');
-const commentsListElement = postModalElement.querySelector('.social__comments');
+const COMMENTS_COUNT = 5;
 
-const commentCountElement = postModalElement.querySelector('.social__comment-count');
-commentCountElement.classList.add('hidden');
+const postModalElement = document.querySelector('.big-picture');
+const postModalCloseElement = postModalElement.querySelector('.big-picture__cancel');
+const commentsListElement = postModalElement.querySelector('.social__comments');
+const commentsShownCountElement = postModalElement.querySelector('.comments-shown-count');
 const commentsLoaderElement = postModalElement.querySelector('.comments-loader');
-commentsLoaderElement.classList.add('hidden');
+
+let commentsData = [];
+let commentsStartIndex = 0;
+let commentsShownCount = 0;
 
 const createCommentItem = ({ avatar, message, name }) => {
   const commentItem = document.createElement('li');
@@ -29,25 +35,49 @@ const createCommentItem = ({ avatar, message, name }) => {
   return commentItem;
 };
 
-const clearCommentsList = () => {
-  commentsListElement.innerHTML = '';
-};
-
 const renderComments = (comments) => {
   const commentsListFragment = document.createDocumentFragment();
   comments.forEach((comment) => {
     commentsListFragment.append(createCommentItem(comment));
   });
-  clearCommentsList();
+
+  commentsShownCount += comments.length;
+  commentsShownCountElement.textContent = commentsShownCount;
+
+  if (commentsShownCount >= commentsData.length) {
+    commentsLoaderElement.classList.add('hidden');
+  }
   commentsListElement.append(commentsListFragment);
 };
 
+const showComments = () => {
+  const comments = commentsData.slice(commentsStartIndex, commentsStartIndex + COMMENTS_COUNT);
+  commentsStartIndex += COMMENTS_COUNT;
+  renderComments(comments);
+};
+
 const renderPicture = ({ url, description, comments, likes }) => {
+  commentsData = comments;
   postModalElement.querySelector('.big-picture__img img').src = url;
   postModalElement.querySelector('.social__caption').textContent = description;
   postModalElement.querySelector('.likes-count').textContent = likes;
   postModalElement.querySelector('.comments-count').textContent = comments.length;
   renderComments(comments);
+  commentsLoaderElement.classList.remove('hidden');
+  commentsListElement.innerHTML = '';
+  showComments();
+  openModal(postModalElement);
 };
 
-export { renderPicture };
+const clearCommentsListCounter = () => {
+  commentsStartIndex = 0;
+  commentsShownCount = 0;
+};
+
+postModalCloseElement.addEventListener('click', () => {
+  closeModal();
+});
+
+commentsLoaderElement.addEventListener('click', showComments);
+
+export { renderPicture, clearCommentsListCounter };

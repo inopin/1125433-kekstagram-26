@@ -7,9 +7,9 @@ function getRandomPositiveInteger(a, b) {
 const getRandomArrayElement = (elements) =>
   elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-// function checkStringLength(string, length) {
-//   return string.length <= length;
-// }
+function checkStringLength(string, length) {
+  return string.length <= length;
+}
 const EscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomArrayElement, getRandomPositiveInteger, EscapeKey};
+export {getRandomArrayElement, getRandomPositiveInteger, EscapeKey, checkStringLength};
