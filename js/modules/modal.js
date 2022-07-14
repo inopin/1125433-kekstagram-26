@@ -1,7 +1,8 @@
 import{EscapeKey} from './utils.js';
+import {resetForm, pristine} from './loadForm.js';
+import { clearCommentsListCounter} from './getBigPicture.js';
 
 const body = document.body;
-const postModalCloseElement = document.querySelector('.big-picture__cancel');
 let targetElement;
 
 
@@ -23,12 +24,16 @@ function closeModal() {
   body.classList.remove('modal-open');
   targetElement.classList.add('hidden');
   document.removeEventListener('keydown', modalEscKeydownHandler);
+  if (targetElement.classList.contains('img-upload__overlay')) {
+    pristine.reset();
+    resetForm();
+  }
+
+  if (targetElement.classList.contains('big-picture')) {
+    clearCommentsListCounter();
+  }
 }
 
-postModalCloseElement.addEventListener('click', () => {
-  closeModal();
-});
-
-export { openModal };
+export { openModal, closeModal };
 
 
