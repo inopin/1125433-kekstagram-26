@@ -62,7 +62,6 @@ const renderPicture = ({ url, description, comments, likes }) => {
   postModalElement.querySelector('.social__caption').textContent = description;
   postModalElement.querySelector('.likes-count').textContent = likes;
   postModalElement.querySelector('.comments-count').textContent = comments.length;
-  renderComments(comments);
   commentsLoaderElement.classList.remove('hidden');
   commentsListElement.innerHTML = '';
   showComments();
