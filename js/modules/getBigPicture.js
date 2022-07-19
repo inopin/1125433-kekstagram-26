@@ -40,10 +40,10 @@ const renderComments = (comments) => {
   comments.forEach((comment) => {
     commentsListFragment.append(createCommentItem(comment));
   });
-
+   
   commentsShownCount += comments.length;
   commentsShownCountElement.textContent = commentsShownCount;
-
+  
   if (commentsShownCount >= commentsData.length) {
     commentsLoaderElement.classList.add('hidden');
   }
@@ -62,7 +62,7 @@ const renderPicture = ({ url, description, comments, likes }) => {
   postModalElement.querySelector('.social__caption').textContent = description;
   postModalElement.querySelector('.likes-count').textContent = likes;
   postModalElement.querySelector('.comments-count').textContent = comments.length;
-  renderComments(comments);
+
   commentsLoaderElement.classList.remove('hidden');
   commentsListElement.innerHTML = '';
   showComments();
