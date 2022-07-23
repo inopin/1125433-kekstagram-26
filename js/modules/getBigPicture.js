@@ -7,6 +7,10 @@ const COMMENTS_COUNT = 5;
 
 const postModalElement = document.querySelector('.big-picture');
 const postModalCloseElement = postModalElement.querySelector('.big-picture__cancel');
+const postImageElement = postModalElement.querySelector('.big-picture__img img');
+const socialCaptionElement = postModalElement.querySelector('.social__caption');
+const likesCountElement = postModalElement.querySelector('.likes-count');
+const commentsCountElement = postModalElement.querySelector('.comments-count');
 const commentsListElement = postModalElement.querySelector('.social__comments');
 const commentsShownCountElement = postModalElement.querySelector('.comments-shown-count');
 const commentsLoaderElement = postModalElement.querySelector('.comments-loader');
@@ -54,10 +58,10 @@ const renderComments = () => {
 };
 
 const renderPicture = ({ url, description, comments, likes }) => {
-  postModalElement.querySelector('.big-picture__img img').src = url;
-  postModalElement.querySelector('.social__caption').textContent = description;
-  postModalElement.querySelector('.likes-count').textContent = likes;
-  postModalElement.querySelector('.comments-count').textContent = comments.length;
+  postImageElement.src = url;
+  socialCaptionElement.textContent = description;
+  likesCountElement.textContent = likes;
+  commentsCountElement.textContent = comments.length;
   commentsLoaderElement.classList.remove('hidden');
   commentsListElement.innerHTML = '';
   commentsData = comments;

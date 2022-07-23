@@ -1,10 +1,5 @@
 const DIVISOR = 100;
 
-const formElement = document.querySelector('.img-upload__form');
-const imageElement = formElement.querySelector('.img-upload__preview img');
-const scaleElement = formElement.querySelector('.scale');
-const scaleValueElement = formElement.querySelector('.scale__control--value');
-
 const Scale = {
   MIN: 25,
   MAX: 100,
@@ -12,6 +7,10 @@ const Scale = {
   DEFAULT: 100
 };
 
+const formElement = document.querySelector('.img-upload__form');
+const imageElement = formElement.querySelector('.img-upload__preview img');
+const scaleElement = formElement.querySelector('.scale');
+const scaleValueElement = formElement.querySelector('.scale__control--value');
 let scaleValue = Scale.DEFAULT;
 
 const setImageScale = (value) => {

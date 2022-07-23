@@ -33,4 +33,10 @@ pictures.addEventListener('click', (evt) => {
   }
 });
 
-export {renderPictures};
+const clearPictures = () => {
+  pictures.querySelectorAll('.picture').forEach((eventElement) => {
+    eventElement.remove();
+  });
+};
+
+export {renderPictures, clearPictures};
