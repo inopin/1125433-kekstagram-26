@@ -13,6 +13,9 @@ const modalEscKeydownHandler = (evt) => {
     if (evt.target.matches('.text__hashtags') || evt.target.matches('.text__description')) {
       return;
     }
+    if (document.querySelector('.error')) {
+      return;
+    }
     evt.preventDefault();
     closeModal();
   }

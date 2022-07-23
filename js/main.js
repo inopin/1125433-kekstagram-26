@@ -1,11 +1,15 @@
-import {posts} from './modules/data.js';
+import {getData} from './modules/apiWork.js';
+import {showAlert} from './modules/utils.js';
 import {renderPictures} from './modules/minImg.js';
 import './modules/loadForm.js';
 import './modules/scale.js';
 import './modules/effect.js';
 
-const getPost = (post) => {
-  renderPictures(post);
-};
-
-getPost(posts());
+getData(
+  (post)=> {
+    renderPictures(post);
+  },
+  (message)=>{
+    showAlert(message);
+  }
+);
