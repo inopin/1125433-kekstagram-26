@@ -8,8 +8,7 @@ const picturesPart = document.createDocumentFragment();
 let photosData = [];
 
 function renderPictures(photos) {
-  photosData = photos;
-  photosData.forEach(({ id, url, comments, likes }) => {
+  photos.forEach(({ id, url, comments, likes }) => {
     const pictureElem = pictureTemplate.cloneNode(true);
     pictureElem.dataset.photoId = id;
     pictureElem.querySelector('.picture__img').src = url;
@@ -18,6 +17,7 @@ function renderPictures(photos) {
     picturesPart.appendChild(pictureElem);
 
   });
+  photosData = photos;
   pictures.appendChild(picturesPart);
 }
 

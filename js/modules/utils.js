@@ -12,4 +12,20 @@ function checkStringLength(string, length) {
 }
 const EscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomArrayElement, getRandomPositiveInteger, EscapeKey, checkStringLength};
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.classList.add('alert');
+
+  const alertMessage = document.createElement('p');
+  alertMessage.classList.add('alert__message');
+  alertMessage.textContent = message;
+
+  alertContainer.append(alertMessage);
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, 5000);
+};
+
+export {getRandomArrayElement, getRandomPositiveInteger, EscapeKey, checkStringLength, showAlert};

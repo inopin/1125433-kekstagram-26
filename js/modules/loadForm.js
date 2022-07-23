@@ -1,5 +1,7 @@
+import{ sendData} from './apiWork.js';
 import {EscapeKey} from './utils.js';
 import {openModal, closeModal} from './modal.js';
+import {showStatusPop} from './statusPopup.js';
 
 const HASH_NUMBER = 5;
 
@@ -9,6 +11,7 @@ const uploadOverlay  = uploadForm.querySelector('.img-upload__overlay');
 const uploadFormClose  = uploadForm.querySelector('#upload-cancel');
 const hashInput  = uploadForm.querySelector('.text__hashtags');
 const regExpHash = /^#[A-Za-zА-ЯаяЁё0-9]{1,19}$/;
+const formSubmit = uploadForm.querySelector('.img-upload__submit');
 
 const resetForm = () => uploadForm.reset();
 
@@ -41,6 +44,16 @@ fileInput.addEventListener('change', () => {
   openModal(uploadOverlay);
 });
 
+const blockSubmit = () => {
+  formSubmit.disabled = true;
+  formSubmit.textContent = 'Загружаю...';
+};
+
+const unblokSubmit = () => {
+  formSubmit.disabled = false;
+  formSubmit.textContent = 'Загрузить';
+};
+
 uploadFormClose.addEventListener('click', () => {
   closeModal();
   resetForm();
@@ -59,8 +72,23 @@ uploadForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
   if (isValid) {
-    uploadForm.submit();
+    blockSubmit();
+    sendData(
+      () => {
+        closeModal();
+        unblokSubmit();
+        showStatusPop('success');
+      },
+      () => {
+        showStatusPop('error');
+        unblokSubmit();
+      },
+      new FormData(evt.target),
+    );
   }
 });
+
+fileInput.addEventListener('change', fileInput);
+uploadForm.addEventListener('submit', uploadForm);
 
 export { pristine, resetForm };
