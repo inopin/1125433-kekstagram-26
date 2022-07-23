@@ -8,13 +8,13 @@ const fileInput  = uploadForm.querySelector('#upload-file');
 const uploadOverlay  = uploadForm.querySelector('.img-upload__overlay');
 const uploadFormClose  = uploadForm.querySelector('#upload-cancel');
 const hashInput  = uploadForm.querySelector('.text__hashtags');
-const regExp = /^#[A-Za-zА-ЯаяЁё0-9]{1,19}$/;
+const regExpHash = /^#[A-Za-zА-ЯаяЁё0-9]{1,19}$/;
 
 const resetForm = () => uploadForm.reset();
 
 const getHash = () => hashInput.value.split(' ').filter(Boolean);
 
-const checkHashSymbols = () => getHash().every((item) => regExp.test(item));
+const checkHashSymbols = () => getHash().every((item) => regExpHash.test(item));
 
 const checkUniqHash = () => {
   const hash = getHash().map((item) => item.toLowerCase());
