@@ -3,9 +3,7 @@ import {renderPicture} from './getBigPicture.js';
 
 const pictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-// const photoData = posts();
 const picturesPart = document.createDocumentFragment();
-// const modalElement = document.querySelector('.big-picture');
 
 let photosData = [];
 
