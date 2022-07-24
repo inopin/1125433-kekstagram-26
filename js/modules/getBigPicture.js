@@ -78,6 +78,6 @@ postModalCloseElement.addEventListener('click', () => {
   closeModal();
 });
 
-commentsLoaderElement.addEventListener('click', renderComments());
+commentsLoaderElement.addEventListener('click', renderComments);
 
 export { renderPicture, clearCommentsListCounter };
