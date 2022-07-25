@@ -1,11 +1,3 @@
-function getRandomPositiveInteger(a, b) {
-  const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
-  const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-}
-const getRandomArrayElement = (elements) =>
-  elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 function checkStringLength(string, length) {
   return string.length <= length;
@@ -28,4 +20,12 @@ const showAlert = (message) => {
   }, 5000);
 };
 
-export {getRandomArrayElement, getRandomPositiveInteger, EscapeKey, checkStringLength, showAlert};
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export { EscapeKey, checkStringLength, showAlert, debounce};
