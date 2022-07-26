@@ -1,4 +1,4 @@
-import{EscapeKey} from './utils.js';
+import{isEscapeKey} from './utils.js';
 import {resetForm, pristine} from './loadForm.js';
 import { clearCommentsListCounter} from './getBigPicture.js';
 import {resetImageScale} from './scale.js';
@@ -30,7 +30,7 @@ const closeModal = () => {
 };
 
 function modalEscKeydownHandler(evt) {
-  if (EscapeKey(evt)) {
+  if (isEscapeKey(evt)) {
     if (evt.target.matches('.text__hashtags') || evt.target.matches('.text__description')) {
       return;
     }

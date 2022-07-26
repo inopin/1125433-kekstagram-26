@@ -1,5 +1,6 @@
+const API_ADREES = 'https://26.javascript.pages.academy/kekstagram';
 const getData = (onSuccess, onError) => {
-  fetch('https://26.javascript.pages.academy/kekstagram/data')
+  fetch(`${API_ADREES}/data`)
     .then((response) =>{
       if(response.ok) {
         return response.json();
@@ -14,7 +15,7 @@ const getData = (onSuccess, onError) => {
 };
 
 const sendData = (onSuccess, onError, body) => {
-  fetch('https://26.javascript.pages.academy/kekstagram', {
+  fetch(API_ADREES, {
     method: 'POST',
     body,
   })

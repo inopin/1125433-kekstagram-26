@@ -1,4 +1,4 @@
-import { EscapeKey } from './utils.js';
+import { isEscapeKey } from './utils.js';
 
 const Z_ORDER = 10;
 
@@ -24,7 +24,7 @@ const showStatusPop = (type) => {
   body.append(popupElement);
 
   const onPopupEscKeydown = (evt) => {
-    if (EscapeKey(evt)) {
+    if (isEscapeKey(evt)) {
       closeStatusPopup();
     }
   };
