@@ -1,5 +1,5 @@
 import{ sendData} from './apiWork.js';
-import {EscapeKey} from './utils.js';
+import {isEscapeKey} from './utils.js';
 import {openModal, closeModal} from './modal.js';
 import {showStatusPop} from './statusPopup.js';
 
@@ -76,7 +76,7 @@ uploadFormClose.addEventListener('click', () => {
 uploadOverlay.addEventListener('keydown', (evt) => {
   const targetTextFieldElement = evt.target.matches('.text__hashtags') || evt.target.matches('.text__description');
   if (targetTextFieldElement) {
-    if (EscapeKey(evt)) {
+    if (isEscapeKey(evt)) {
       evt.stopPropagation();
     }
   }

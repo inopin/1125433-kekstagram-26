@@ -1,8 +1,8 @@
-
+const REMOVE_ALERT = 5000;
 function checkStringLength(string, length) {
   return string.length <= length;
 }
-const EscapeKey = (evt) => evt.key === 'Escape';
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const showAlert = (message) => {
   const alertContainer = document.createElement('div');
@@ -17,7 +17,7 @@ const showAlert = (message) => {
 
   setTimeout(() => {
     alertContainer.remove();
-  }, 5000);
+  }, REMOVE_ALERT);
 };
 
 const debounce = (callback, timeoutDelay) => {
@@ -28,4 +28,4 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-export { EscapeKey, checkStringLength, showAlert, debounce};
+export { isEscapeKey, checkStringLength, showAlert, debounce};
